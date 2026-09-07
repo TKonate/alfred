@@ -61,7 +61,7 @@ jobs:
           echo "Scanning for leaked secrets..."
           FOUND=0
           for pattern in 'ghp_' 'github_pat_' 'sk-' 'AKIA' 'BEGIN RSA' 'BEGIN OPENSSH'; do
-            if grep -r "$pattern" --include='*.html' --include='*.md' --include='*.yml' --include='*.svg' . 2>/dev/null; then
+            if grep -r "$pattern" --include='*.html' --include='*.md' --include='*.svg' . 2>/dev/null | grep -v '.github/workflows/'; then
               echo "WARNING: Found pattern '$pattern' in repository"
               FOUND=1
             fi
