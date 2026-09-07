@@ -66,7 +66,7 @@ The site rebuilds automatically via the GitHub Actions workflow.
 ## Contact
 
 For questions, data deletion requests, or support:
-[d3miurge@proton.me](mailto:d3miurge@proton.me)
+[konate.tiberio@proton.me](mailto:konate.tiberio@proton.me)
 
 ## License
 
