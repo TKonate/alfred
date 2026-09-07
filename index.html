@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hermes Alfred — Privacy-First Personal Life Manager</title>
+  <meta name="description" content="Hermes Alfred is a privacy-first personal life manager designed to help organize personal information, routines, planning, and projects.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.7;
+      color: #e2e8f0;
+      background: #0f172a;
+    }
+    a { color: #818cf8; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 3rem 1.5rem; }
+
+    header { margin-bottom: 3rem; }
+    header img { height: 48px; margin-bottom: 1.5rem; }
+    header h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 2.25rem;
+      color: #f8fafc;
+      margin-bottom: 0.5rem;
+    }
+    header .tagline {
+      font-size: 1.15rem;
+      color: #94a3b8;
+      font-style: italic;
+    }
+
+    section { margin-bottom: 2.5rem; }
+    section h2 {
+      font-size: 1.35rem;
+      color: #f1f5f9;
+      border-bottom: 1px solid #1e293b;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    section p, section li { color: #cbd5e1; }
+    section ul { padding-left: 1.25rem; margin-top: 0.5rem; }
+    section li { margin-bottom: 0.4rem; }
+
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+    .card p { margin-bottom: 0.5rem; }
+    .card p:last-child { margin-bottom: 0; }
+
+    .links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .links a {
+      display: inline-block;
+      padding: 0.6rem 1.25rem;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      color: #c7d2fe;
+      font-weight: 500;
+      transition: border-color 0.2s;
+    }
+    .links a:hover { border-color: #818cf8; text-decoration: none; }
+
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #1e293b;
+      color: #64748b;
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="/assets/logo.svg" alt="Hermes Alfred">
+      <h1>Hermes Alfred</h1>
+      <p class="tagline">A privacy-first personal life manager.</p>
+    </header>
+
+    <section>
+      <h2>What is Hermes Alfred?</h2>
+      <p>
+        Hermes Alfred is a privacy-first personal life manager designed to help its user organize personal information, routines, planning, sport, finances, nutrition and projects with continuity and low cognitive load.
+      </p>
+      <p style="margin-top: 0.75rem;">
+        Alfred helps its user:
+      </p>
+      <ul>
+        <li>Organize tasks and priorities across days</li>
+        <li>Search and structure emails</li>
+        <li>Manage calendar events and scheduling</li>
+        <li>Track personal projects from idea to completion</li>
+        <li>Maintain continuity between work sessions</li>
+        <li>Reduce cognitive load through persistent context</li>
+        <li>Keep personal data under the user's control</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Google Workspace Integration</h2>
+      <div class="card">
+        <p>
+          When connected to a Google account, Hermes Alfred may request access to the following services:
+        </p>
+        <ul>
+          <li><strong>Gmail</strong> — read, search, and draft emails on the user's behalf</li>
+          <li><strong>Google Calendar</strong> — view and organize events and schedules</li>
+          <li><strong>Google Drive</strong> — access files and documents when requested</li>
+          <li><strong>Google Contacts</strong> — look up contact information</li>
+          <li><strong>Google Docs</strong> — read and create documents</li>
+          <li><strong>Google Sheets</strong> — read and update spreadsheets</li>
+        </ul>
+        <p style="margin-top: 1rem;">
+          These permissions are used exclusively to provide the features requested by the connected user. No data is shared with third parties or used for advertising.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Privacy</h2>
+      <p>
+        Your data is yours. Hermes Alfred does not sell, share, or use your personal information for advertising or model training.
+        OAuth tokens are stored locally and never committed to public repositories.
+      </p>
+      <div class="links">
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Use</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>
+        For questions, data deletion requests, or support:<br>
+        <a href="mailto:d3miurge@proton.me">d3miurge@proton.me</a>
+      </p>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 Tiberio Konate. Hermes Alfred is open-source software.</p>
+    </footer>
+  </div>
+</body>
+</html>

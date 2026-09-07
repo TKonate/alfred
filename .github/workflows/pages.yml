@@ -1,0 +1,92 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate HTML
+        run: |
+          echo "Checking HTML files for basic validity..."
+          ERRORS=0
+          for f in index.html privacy.html terms.html 404.html; do
+            if [ ! -f "$f" ]; then
+              echo "ERROR: Missing $f"
+              ERRORS=$((ERRORS + 1))
+              continue
+            fi
+            # Check for closing tags
+            if ! grep -q '</html>' "$f"; then
+              echo "ERROR: $f missing </html> closing tag"
+              ERRORS=$((ERRORS + 1))
+            fi
+            if ! grep -q '</body>' "$f"; then
+              echo "ERROR: $f missing </body> closing tag"
+              ERRORS=$((ERRORS + 1))
+            fi
+            if ! grep -q '</head>' "$f"; then
+              echo "ERROR: $f missing </head> closing tag"
+              ERRORS=$((ERRORS + 1))
+            fi
+            # Check no secrets leaked
+            if grep -iE '(ghp_|github_pat_|sk-|api[_-]?key|secret|token|password)' "$f" | grep -v 'meta name="description"' | grep -v 'content="Privacy' > /dev/null 2>&1; then
+              echo "WARNING: Possible secret in $f — review needed"
+            fi
+            echo "OK: $f"
+          done
+          if [ $ERRORS -gt 0 ]; then
+            echo "FAILED: $ERRORS error(s) found"
+            exit 1
+          fi
+          echo "All HTML files valid."
+
+      - name: Check for secrets in repo
+        run: |
+          echo "Scanning for leaked secrets..."
+          FOUND=0
+          for pattern in 'ghp_' 'github_pat_' 'sk-' 'AKIA' 'BEGIN RSA' 'BEGIN OPENSSH'; do
+            if grep -r "$pattern" --include='*.html' --include='*.md' --include='*.yml' --include='*.svg' . 2>/dev/null; then
+              echo "WARNING: Found pattern '$pattern' in repository"
+              FOUND=1
+            fi
+          done
+          if [ $FOUND -eq 1 ]; then
+            echo "Review secrets scan output above"
+            exit 1
+          fi
+          echo "No secrets detected."
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
