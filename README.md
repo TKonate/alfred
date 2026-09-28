@@ -2,7 +2,7 @@
 
 Public website and privacy documentation for **Hermes Alfred**, a privacy-first personal life manager.
 
-🌐 **Live site:** [https://tkonate.github.io/alfred/](https://tkonate.github.io/alfred/)
+🌐 **Live site:** [https://tkonate.github.io/alfred/](https://tkonate.github.io/alfred/) — [![Build & Deploy](https://github.com/TKonate/alfred/actions/workflows/pages.yml/badge.svg)](https://github.com/TKonate/alfred/actions/workflows/pages.yml)
 
 ## What is Hermes Alfred?
 
